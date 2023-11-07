@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}Online Shop{% endblock %}</title>
+    <script src="https://unpkg.com/htmx.org@1.9.8"
+        integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <!-- Add common CSS and JavaScript links here -->
+</head>
+
+<body>
+    <header>
+        <!-- Common header content goes here -->
+    </header>
+
+    <div class="content container-fluid">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <!-- Common footer content goes here -->
+    </footer>
+</body>
+
+</html>
