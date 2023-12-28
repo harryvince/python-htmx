@@ -11,3 +11,6 @@ class Test(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     sample = db.Column(db.String(60), nullable=False)
+
+    def __init__(self, sample):
+        self.sample = sample

@@ -24,4 +24,14 @@
     </footer>
 </body>
 
+<script>
+    const redirectElement = document.getElementById('Redirect')
+    if (redirectElement) {
+        redirectElement.addEventListener('htmx:afterSwap', function(event) {
+            if (event.detail.xhr.responseURL) {
+                window.location = event.detail.xhr.responseURL
+            }
+        })
+    }
+</script>
 </html>
