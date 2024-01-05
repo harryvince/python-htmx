@@ -14,3 +14,12 @@ class Test(db.Model):
 
     def __init__(self, sample):
         self.sample = sample
+
+class AnotherTest(db.Model):
+    __tablename__ = "AnotherTest"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(60), nullable=False)
+    test_id = db.Column(db.Integer, db.ForeignKey("Test.id"), nullable=False)
+
+    test = db.relationship("Test", foreign_keys=[test_id])
