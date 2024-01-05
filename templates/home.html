@@ -11,4 +11,5 @@
     </form>
     <div id="response-div"></div>
     <button type="button" class="contrast" hx-post="/api/redirect" id="Redirect">Redirect</button>
+    <div id="select" hx-get="/api/select?id=3" hx-trigger="load" hx-swap="outerHTML"></div>
 {% endblock %}

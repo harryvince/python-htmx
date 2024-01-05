@@ -1,0 +1,10 @@
+<select required>
+  <option disabled value="">Select your favorite sample...</option>
+  {% for option in tests %}
+      {% if id == option.id %}
+          <option value="{{ option.id }}" selected>selected: {{ option.sample }}</option>
+      {% else %}
+          <option value="{{ option.id }}">not-selected: {{ option.sample }}</option>
+      {% endif %}
+  {% endfor %}
+</select>

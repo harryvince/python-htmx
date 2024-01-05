@@ -22,3 +22,11 @@ def return_json():
     if value == None:
         return jsonify({})
     return f"{query}; {value}"
+
+@api.route('/select', methods=["GET"])
+def return_select():
+    id = request.args.get("id")
+    if id == None:
+        return jsonify({ 'error': 'no id provided' })
+    tests = db.session.query(Test).all()
+    return render_template('select.html', tests=tests, id=int(id))
