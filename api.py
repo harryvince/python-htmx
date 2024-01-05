@@ -17,7 +17,7 @@ def redirect_route():
 
 @api.route('/json', methods=["GET"])
 def return_json():
-    query = db.session.query(AnotherTest.id, AnotherTest.name, Test.sample).join(Test)
+    query = db.session.query(*AnotherTest.__table__.columns, *Test.__table__.columns).filter(AnotherTest.test_id == Test.id)
     value = query.all()
     if value == None:
         return jsonify({})

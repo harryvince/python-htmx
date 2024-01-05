@@ -1,4 +1,5 @@
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped, relationship
+from sqlalchemy import String, ForeignKey
 from flask_sqlalchemy import SQLAlchemy
 
 class Base(DeclarativeBase):
@@ -6,20 +7,18 @@ class Base(DeclarativeBase):
 
 db = SQLAlchemy(model_class=Base)
 
-class Test(db.Model):
+class Test(Base):
     __tablename__ = "Test"
 
-    id = db.Column(db.Integer, primary_key=True)
-    sample = db.Column(db.String(60), nullable=False)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    sample: Mapped[str] = mapped_column(String(60), nullable=False)
 
     def __init__(self, sample):
         self.sample = sample
 
-class AnotherTest(db.Model):
+class AnotherTest(Base):
     __tablename__ = "AnotherTest"
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60), nullable=False)
-    test_id = db.Column(db.Integer, db.ForeignKey("Test.id"), nullable=False)
-
-    test = db.relationship("Test", foreign_keys=[test_id])
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(60), nullable=False)
+    test_id: Mapped[int] = mapped_column(ForeignKey("Test.id"), nullable=False)
